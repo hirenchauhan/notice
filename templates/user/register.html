@@ -1,0 +1,171 @@
+{% extends 'user/layout.html' %}
+{% block content %}
+<!-- ****** Breadcumb Area Start ****** -->
+<div class="breadcumb-area" style="background-image: url(img/bg-img/breadcumb.jpg);">
+    <div class="container h-100">
+        <div class="row h-100 align-items-center">
+            <div class="col-12">
+                <div class="bradcumb-title text-center">
+                    <h2>Register</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="breadcumb-nav">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Register</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ****** Breadcumb Area End ****** -->
+
+<!-- ****** Contatc Area Start ****** -->
+<div class="container-fluid py-5">
+    <div class="container py-5">
+        <div class="text-center mb-3 pb-3">
+            <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Registration</h6>
+            <h1>Registration</h1>
+        </div>
+
+        {% if messages %}
+            <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="contact-form bg-white shadow" style="padding: 30px;">
+                    <div id="success"></div>
+                    <form name="sentMessage" id="contactForm" novalidate="novalidate" method="post" action="/user/store_register">
+                        {% csrf_token %}
+                        <div class="form-row">
+                            <div class="control-group col-sm-6 pb-3">
+                                <label>First Name :</label>
+                                <input type="text" class="form-control p-4" id="fname" name="fname" placeholder="First Name"
+                                    required="required" data-validation-required-message="Please enter your first name" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="control-group col-sm-6 pb-3">
+                                <label>Last Name :</label>
+                                <input type="text" class="form-control p-4" id="lname" name="lname" placeholder="Last Name"
+                                    required="required" data-validation-required-message="Please enter your last name" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="control-group col-sm-12 pb-3">
+                                <label>User Name :</label>
+                                <input type="text" class="form-control p-4" id="username" name="username" placeholder="UserName"
+                                    required="required" data-validation-required-message="Please enter your last name" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="control-group col-sm-12 pb-3">
+                                <label>Email address :</label>
+                                <input type="email" class="form-control p-4" id="email" name="email" placeholder="Email"
+                                    required="required" data-validation-required-message="Please enter your email" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="control-group col-sm-6 pb-3">
+                                <label>Contact :</label>
+                                <input type="number" class="form-control p-4" id="contact" name="contact" placeholder="Contact"
+                                    required="required" data-validation-required-message="Please enter your contact" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="control-group col-sm-6 pb-3">
+                                <label>Date Of Birth :</label>
+                                <input type="date" class="form-control p-4" id="dob" name="dob"
+                                    required="required" data-validation-required-message="Please enter your Date of Birth" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            
+                            <label class="pl-2 pb-3">Gender :</label>
+                            <div class="control-group col-sm-2 pl-5 pb-3">
+                                <input class="form-check-input" type="radio" name="gender" id="gender" value="male" checked>
+                                <label class="form-check-label" for="exampleRadios1">
+                                    Male
+                                </label>
+                            </div>
+                            <div class="control-group col-sm-3 pl-5 pb-3">
+                                <input class="form-check-input" type="radio" name="gender" id="gender" value="female" checked>
+                                <label class="form-check-label" for="exampleRadios1">
+                                    Female
+                                </label>
+                            </div>
+                            
+                            <div class="control-group col-sm-12 pb-3">
+                                <label>Address :</label>
+                                <textarea class="form-control py-3 px-4" rows="2" id="address" name="address" placeholder="Address"
+                                    required="required"
+                                    data-validation-required-message="Please enter your address"></textarea>
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="control-group col-sm-4">
+                                <label>State :</label>
+                                <select class="form-control" name="state" id="state">
+                                    <option value="" selected>Select State</option>
+                                    {% for row in state %}
+                                    <option value="{{row.id}}">{{row.state_name}}</option>
+                                    {% endfor %}
+                                </select>
+                                <required="required" data-validation-required-message="Please enter your State" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="control-group col-sm-4 pb-3">
+                                <label>City :</label>
+                                <select class="form-control" id="city" name="city">
+                                    <option value="AL" selected>Select City</option>
+                                    {% for row in city %}
+                                    <option value="{{row.id}}">{{row.city_name}}</option>
+                                    {% endfor %}
+                                </select>
+                                <required="required" data-validation-required-message="Please enter your City" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="control-group col-sm-4">
+                                <label>Area :</label>
+                                <select class="form-control" name="area" id="area">
+                                    <option value="AL" selected>Select Area</option>
+                                    {% for row in area %}
+                                    <option value="{{row.id}}">{{row.area_name}}</option>
+                                    {% endfor %}
+                                </select>
+                                <required="required" data-validation-required-message="Please enter your Area" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="control-group col-sm-6 pb-3">
+                                <label>Password :</label>
+                                <input type="password" class="form-control p-4" id="password" name="password" placeholder="Password"
+                                    required="required" data-validation-required-message="Please enter your password" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="control-group col-sm-6 pb-3">
+                                <label>Confirm Password :</label>
+                                <input type="password" class="form-control p-4" id="cpassword" name="cpassword" placeholder="Confirm Password"
+                                    required="required" data-validation-required-message="Please enter your Confirm Password" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            
+                        </div>
+
+                        <div class="text-center">
+                            <button class="btn btn-primary py-3 px-5" type="submit" id="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ****** Contact Area End ****** -->
+
+{% endblock %}

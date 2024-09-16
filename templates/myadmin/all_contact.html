@@ -1,0 +1,73 @@
+{% extends 'myadmin/common/layout.html' %}
+{% block content %}
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">All Contact</h4>
+        
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>
+                 #
+                </th>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Email
+                </th>
+                <th>
+                  Contact
+                </th>
+                <th>
+                    Message
+                </th>
+                <th>
+                    Date
+                </th>
+                <!-- <th>
+                    Edit
+                </th> -->
+                <th>
+                    Delete
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for row in result %}
+              <tr>
+                <td>
+                  {{row.id}}
+                </td>
+                <td>
+                    {{row.name}}
+                </td>
+                <td>
+                    {{row.email}}
+                </td>
+                <td>
+                  {{row.contact}}
+                </td>
+                <td>
+                    {{row.message}}
+                </td>
+                <td>
+                    {{row.date}}
+                </td>
+                <!-- <td>
+                    <a href="/myadmin/edit_area/{{row.id}}" class="btn btn-primary">Edit</a>
+                </td> -->
+                <td>
+                    <a href="/myadmin/del_contact/{{row.id}}" class="btn btn-danger">Delete</a>
+                </td>
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endblock %}

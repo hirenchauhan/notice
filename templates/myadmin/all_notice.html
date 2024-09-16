@@ -1,0 +1,68 @@
+{% extends 'myadmin/common/layout.html' %}
+{% block content %}
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">All Area</h4>
+        
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>
+                 #
+                </th>
+                <th>
+                    Title
+                </th>
+                <th>
+                    Description
+                </th>
+                <th>
+                  Date
+                </th>
+                <th>
+                    Notic Pdf
+                </th>
+                <th>
+                    Edit
+                </th>
+                <th>
+                    Delete
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for row in result %}
+              <tr>
+                <td>
+                  {{row.id}}
+                </td>
+                <td>
+                    {{row.title}}
+                </td>
+                <td>
+                    {{row.description}}
+                </td>
+                <td>
+                  {{row.date}}
+                </td>
+                <td>
+                    <!-- <img src="/media/upload/{{row.pdf}}" height="100" width="100"> -->
+                    <a href="/media/upload/{{row.pdf}}" download>{{ row.pdf }}</a>
+                  </td>
+                <td>
+                    <a href="/myadmin/edit_notice/{{row.id}}" class="btn btn-primary">Edit</a>
+                </td>
+                <td>
+                    <a href="/myadmin/del_notice/{{row.id}}" class="btn btn-danger">Delete</a>
+                </td>
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endblock %}

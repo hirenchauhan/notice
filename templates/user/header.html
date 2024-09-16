@@ -1,0 +1,84 @@
+{% load static %}
+<!-- ****** Top Header Area Start ****** -->
+<div class="top_header_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-6 col-sm-6">
+                <!--  Top Social bar start -->
+                <div class="top_social_bar">
+                    <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                    <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                    <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                    <a href="#"><i class="fa fa-skype" aria-hidden="true"></i></a>
+                    <a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
+                </div>
+            </div>
+            <!--  Login Register Area -->
+            <div class="col-7 col-sm-6 py-2">
+                <div class="signup-search-area d-flex align-items-center justify-content-end">
+                    <div class="login_register_area d-flex">
+                        <div class="login">
+                            <a href="/user/login">Log In</a>
+                        </div>
+                        <div class="register">
+                            <a href="/user/register">Register</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ****** Top Header Area End ****** -->
+
+<!-- ****** Header Area Start ****** -->
+<header class="header_area">
+    <div class="container">
+        <div class="row">
+            <!-- Logo Area Start -->
+            <div class="col-12">
+                <div class="logo_area text-center">
+                    <a href="index.html" class="yummy-logo">Notice Manager</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <nav class="navbar navbar-expand-lg">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#yummyfood-nav" aria-controls="yummyfood-nav" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars" aria-hidden="true"></i> Menu</button>
+                    <!-- Menu Area Start -->
+                    <div class="collapse navbar-collapse justify-content-center" id="yummyfood-nav">
+                        <ul class="navbar-nav" id="yummy-nav">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                            </li>
+                            {% if request.user.is_authenticated %}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/user/notice">Notice</a>
+                                </li>
+                            {% endif %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="/user/register">Register</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/user/contact">Contact</a>
+                            </li>
+                            {% if request.user.is_authenticated %}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/user/logout">Logout</a>
+                                </li>
+                            {% else %}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/user/login">Login</a>
+                                </li>
+                            {% endif %}
+                            
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- ****** Header Area End ****** -->

@@ -1,0 +1,39 @@
+{% extends 'myadmin/common/layout.html' %}
+{% block content %}
+<div class="row">
+    <div class="col-12 grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Edit Area</h4>
+          <form class="forms-sample" method="post" action="/myadmin/update_area/{{result.id}}">
+            {% csrf_token %}
+            <div class="form-group">
+              <label for="exampleInputName1">Area Name</label>
+              <input type="text" class="form-control" id="area_name" name="area_name" placeholder="Add Area Name" value="{{result.area_name}}">
+            </div>  
+            <div class="form-group">
+                <label for="exampleSelectGender">State Name </label>
+                  <select class="form-control" id="state" name="state">
+                    <option selected>Select State Name</option>
+                    {% for row in result2 %}
+                        <option value="{{row.id}}" {% if result.state_id == row.id %}selected{% endif %}>{{row.state_name}}</option>
+                    {% endfor %}
+                  </select>
+            </div>
+            <div class="form-group">
+                <label for="exampleSelectGender">City Name </label>
+                  <select class="form-control" id="city" name="city">
+                    <option selected>Select City Name</option>
+                    {% for row in result1 %}
+                        <option value="{{row.id}}" {% if result.city_id == row.id %}selected{% endif %}>{{row.city_name}}</option>
+                    {% endfor %}
+                  </select>
+            </div>
+            <button type="submit" id="submit" name="submit" value="Update" class="btn btn-primary mr-2">Update</button>
+            <button class="btn btn-light">Cancel</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endblock %}

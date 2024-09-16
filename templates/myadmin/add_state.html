@@ -1,0 +1,21 @@
+{% extends 'myadmin/common/layout.html' %}
+{% block content %}
+<div class="row">
+    <div class="col-12 grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Add New State</h4>
+          <form class="forms-sample" method="post" action="/myadmin/insert_state">
+            {% csrf_token %}
+            <div class="form-group">
+              <label for="exampleInputName1">State Name</label>
+              <input type="text" class="form-control" id="state_name" name="state_name" placeholder="Add State Name">
+            </div>  
+            <button type="submit" id="submit" name="submit" value="Submit" class="btn btn-primary mr-2">Submit</button>
+            <button class="btn btn-light">Cancel</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endblock %}

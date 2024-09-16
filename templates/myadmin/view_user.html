@@ -1,0 +1,128 @@
+{% extends 'myadmin/common/layout.html' %}
+{% block content %}
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">User Details</h4>
+        
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>
+                  #
+                </th>
+                <td>
+                   {{result.user.id}}
+                </td>
+              </tr>
+            </thead>
+          <tbody>
+              <tr>
+                <th>
+                    First Name
+                </th>
+                <td>
+                  {{result.user.first_name}}
+                </td>
+              </tr>
+              <tr>
+                <th>
+                    Last Name
+                </th>
+                <td>
+                  {{result.user.last_name}}
+                </td>
+              </tr>
+              <tr>
+                <th>
+                    Username
+                </th>
+                <td>
+                   {{result.user.username}}
+                </td>
+              </tr>
+              
+              <tr>
+                <th>
+                    Email
+                </th>
+                <td>
+                  {{result.user.email}}
+                </td>
+              </tr>
+              <tr>
+                <th>
+                    Contact
+                </th>
+                <td>
+                  {{result.contact}}
+                </td>
+              </tr>
+              <tr>
+                <th>
+                    Date of birth
+                </th>
+                <td>
+                  {{result.dob}}
+                </td>
+              </tr>
+               <tr>
+                <th>
+                    Gender
+                </th>
+                <td>
+                  {{result.gender}}
+                </td>
+              </tr>
+              <tr>
+                <th>
+                     Address
+                </th>
+                <td>
+                  {{result.address}}
+                </td>
+              </tr>
+             
+              <tr>
+                <th>
+                    State
+                </th>
+                <td>
+                  {{result.state}}
+                </td>
+              </tr>
+              <tr>
+                <th>
+                    City
+                </th>
+                <td>
+                  {{result.city}}
+                </td>
+              </tr>
+              <tr>
+                <th>
+                    Area
+                </th>
+                <td>
+                  {{result.area}}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a href="/myadmin/verify/{{ result.id }}">
+                    {% if result.status == 'Pending' %}
+                      <button class="btn btn-danger">{{ result.status }}</button>
+                    {% else %}
+                      <button class="btn btn-success">{{ result.status }}</button>
+                    {% endif %}
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'myadmin/common/layout.html' %}
+{% block content %}
+<div class="row">
+    <div class="col-12 grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Add New Notice</h4>
+          <form class="forms-sample" method="post" action="/myadmin/insert_notice" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+              <label for="exampleInputName1">Notic Title</label>
+              <input type="text" class="form-control" id="title" name="title" placeholder="Add title">
+            </div>
+            <div class="form-group">
+              <label for="exampleTextarea1">Description</label>
+              <textarea class="form-control" id="description" name="description" rows="4"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="exampleTextarea1">Upload Notice</label>
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" id="pdf" name="pdf">
+                <label class="custom-file-label" for="pdf">Upload Your Notice Here</label>
+              </div>
+            </div>  
+            <button type="submit" id="submit" name="submit" value="Submit" class="btn btn-primary mr-2">Submit</button>
+            <button class="btn btn-light">Cancel</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endblock %}
